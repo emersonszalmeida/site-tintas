@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Inventário de Tintas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Inventário de Tintas</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Tintas Disponíveis</a></li>
+                <li><a href="#">Adicionar Nova Tinta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Tintas Disponíveis</h2>
+
+            <label for="pesquisar-tinta">Pesquisar Tinta:</label>
+            <input type="text" id="pesquisar-tinta" placeholder="Digite o nome da tinta">
+
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria">
+                <option value="todas">Todas</option>
+                <option value="carrossel">Carrossel</option>
+                <option value="garra">Garra</option>
+                <option value="mesa-termica">Mesa Térmica</option>
+                <option value="prateleira">Prateleira</option>
+            </select>
+
+    
+            <ul id="tinta-list">
+                <li>
+                    <h3>Tinta Verde</h3>
+                    <p>Quantidade: 10 kg</p>
+                    <p>Localização: prateleira</p>
+                    <p>Data de Aquisição: 2023-08-20</p>
+                    <button class="excluir-tinta">Excluir</button>
+                    <select class="mover-para">
+                        <option value="carrossel">Carrossel</option>
+                        <option value="garra">Garra</option>
+                        <option value="mesa-termica">Mesa Térmica</option>
+                        <option value="prateleira">Prateleira</option>
+                    </select>
+                    <button class="mover-tinta">Mover</button>
+                </li>
+                
+                <li>
+                    <h3>Tinta Azul</h3>
+                    <p>Quantidade: 20 kg</p>
+                    <p>Localização: garra</p>
+                    <p>Data de Aquisição: 2023-08-18</p>
+                    <button class="excluir-tinta">Excluir</button>
+                    <select class="mover-para">
+                        <option value="carrossel">Carrossel</option>
+                        <option value="garra">Garra</option>
+                        <option value="mesa-termica">Mesa Térmica</option>
+                        <option value="prateleira">Prateleira</option>
+                    </select>
+                    <button class="mover-tinta">Mover</button>
+                </li>
+                <li>
+                    <h3>Tinta Vermelha</h3>
+                    <p>Quantidade: 15 kg</p>
+                    <p>Localização: carrossel</p>
+                    <p>Data de Aquisição: 2023-08-15</p>
+                    <button class="excluir-tinta">Excluir</button>
+                    <select class="mover-para">
+                        <option value="carrossel">Carrossel</option>
+                        <option value="garra">Garra</option>
+                        <option value="mesa-termica">Mesa Térmica</option>
+                        <option value="prateleira">Prateleira</option>
+                    </select>
+                    <button class="mover-tinta">Mover</button>
+                </li>
+                <!-- Mais itens de tinta podem ser adicionados aqui -->
+            </ul>
+        </section>
+
+        <section>
+            <h2>Adicionar Nova Tinta</h2>
+            <form id="add-tinta-form">
+                <label for="nome-tinta">Nome da Tinta:</label>
+                <input type="text" id="nome-tinta" name="nome-tinta" required>
+        
+                <label for="quantidade">Quantidade (kg):</label>
+                <input type="number" id="quantidade" name="quantidade" required>
+        
+                <label for="localizacao">Localização:</label>
+                <select id="localizacao" name="localizacao">
+                    <option value="prateleira">Prateleira</option>
+                    <option value="carrossel">Carrossel</option>
+                    <option value="garra">Garra</option>
+                    <option value="mesa-termica">Mesa Térmica</option>
+                </select>
+        
+                <label for="data-aquisicao">Data de Aquisição:</label>
+                <input type="date" id="data-aquisicao" name="data-aquisicao" required>
+        
+                <button type="submit">Adicionar Tinta</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Gerenciamento de Inventário de Tintas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('#add-tinta-form');
+        const tintaList = document.querySelector('#tinta-list');
+        const categoriaInput = document.querySelector('#categoria');
+        const pesquisarTintaInput = document.querySelector('#pesquisar-tinta');
+        const itensTinta = document.querySelectorAll('#tinta-list li');
+        const moverTintaButtons = document.querySelectorAll('.mover-tinta');
+
+        moverTintaButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const tintaItem = button.closest('li');
+                const nomeTinta = tintaItem.querySelector('h3').textContent;
+                const localizacaoAtual = tintaItem.querySelector('p:nth-child(3)').textContent;
+                const quantidade = tintaItem.querySelector('p:nth-child(2)').textContent;
+                const dataAquisicao = tintaItem.querySelector('p:nth-child(4)').textContent;
+                const destinoSelecionado = tintaItem.querySelector('.mover-para').value;
+
+                // Remove a tinta da localização atual
+                tintaItem.remove();
+
+                // Cria um novo item de tinta na localização escolhida
+
+                const novoItem = document.createElement('li');
+                novoItem.innerHTML = `
+                    <h3>${nomeTinta}</h3>
+                    <p>${quantidade}</p>
+                    <p>Localização: ${destinoSelecionado}</p>
+                    <p>${dataAquisicao}</p>
+                    <button class="excluir-tinta">Excluir</button>
+                    <select class="mover-para">
+                        <option value="carrossel">Carrossel</option>
+                        <option value="garra">Garra</option>
+                        <option value="mesa-termica">Mesa Térmica</option>
+                        <option value="prateleira">Prateleira</option>
+                    </select>
+                    <button class="mover-tinta">Mover</button>
+                `;
+
+                tintaList.appendChild(novoItem);
+
+                // Atualiza a filtragem de acordo com a categoria selecionada
+                const categoriaSelecionada = categoriaInput.value;
+                const termoPesquisa = pesquisarTintaInput.value.toLowerCase();
+
+                itensTinta.forEach(itemTinta => {
+                    const nomeTinta = itemTinta.querySelector('h3').textContent.toLowerCase();
+                    const localizacao = itemTinta.querySelector('p:nth-child(3)').textContent.toLowerCase();
+
+                    const exibirPorCategoria = categoriaSelecionada === 'todas' || localizacao.includes(categoriaSelecionada);
+                    const exibirPorPesquisa = nomeTinta.includes(termoPesquisa);
+
+                    if (exibirPorCategoria && exibirPorPesquisa) {
+                        itemTinta.style.display = 'block';
+                    } else {
+                        itemTinta.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            if (form.checkValidity()) {
+                const nomeTinta = document.querySelector('#nome-tinta').value;
+                const quantidade = document.querySelector('#quantidade').value;
+                const localizacao = document.querySelector('#localizacao').value;
+                const dataAquisicao = document.querySelector('#data-aquisicao').value;
+
+                const tintaItem = document.createElement('li');
+                tintaItem.innerHTML = `
+                    <h3>${nomeTinta}</h3>
+                    <p>Quantidade: ${quantidade} kg</p>
+                    <p>Localização: ${localizacao}</p>
+                    <p>Data de Aquisição: ${dataAquisicao}</p>
+                    <button class="excluir-tinta">Excluir</button>
+                    <select class="mover-para">
+                        <option value="carrossel">Carrossel</option>
+                        <option value="garra">Garra</option>
+                        <option value="mesa-termica">Mesa Térmica</option>
+                        <option value="prateleira">Prateleira</option>
+                    </select>
+                    <button class="mover-tinta">Mover</button>
+                `;
+
+                tintaList.appendChild(tintaItem);
+
+                form.reset();
+            }
+        });
+
+        tintaList.addEventListener('click', function (event) {
+            if (event.target.classList.contains('excluir-tinta')) {
+                const tintaItem = event.target.closest('li');
+                tintaItem.remove();
+            }
+        });
+
+        pesquisarTintaInput.addEventListener('input', function () {
+            const termoPesquisa = pesquisarTintaInput.value.toLowerCase();
+
+            itensTinta.forEach(itemTinta => {
+                const nomeTinta = itemTinta.querySelector('h3').textContent.toLowerCase();
+                if (nomeTinta.includes(termoPesquisa)) {
+                    itemTinta.style.display = 'block';
+                } else {
+                    itemTinta.style.display = 'none';
+                }
+            });
+        });
+
+        categoriaInput.addEventListener('change', function () {
+            const categoriaSelecionada = categoriaInput.value;
+            const termoPesquisa = pesquisarTintaInput.value.toLowerCase();
+
+            itensTinta.forEach(itemTinta => {
+                const nomeTinta = itemTinta.querySelector('h3').textContent.toLowerCase();
+                const localizacao = itemTinta.querySelector('p:nth-child(3)').textContent.toLowerCase();
+
+                const exibirPorCategoria = categoriaSelecionada === 'todas' || localizacao.includes(categoriaSelecionada);
+                const exibirPorPesquisa = nomeTinta.includes(termoPesquisa);
+
+                if (exibirPorCategoria && exibirPorPesquisa) {
+                    itemTinta.style.display = 'block';
+                } else {
+                    itemTinta.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
