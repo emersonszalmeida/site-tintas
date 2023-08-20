@@ -18,6 +18,12 @@ header {
     padding: 10px;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
 nav ul {
     list-style: none;
 }
@@ -57,7 +63,7 @@ form label {
 input[type="text"],
 input[type="number"],
 input[type="date"] {
-    width: 100%;
+    width: 25%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
