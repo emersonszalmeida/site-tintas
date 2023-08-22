@@ -1,21 +1,50 @@
 @charset "UTF-8";
 
-/* Reset de estilos padrão */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos globais */
+
 body {
     font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: #333;
-    color: white;
+    background-color: rgb(190, 191, 241);
+    color: black;
     padding: 10px;
+}
+
+#header-top {
+    width: 100%;
+    background: #333;
+    position: fixed;
+}
+
+#header-top li {
+    display: inline;
+    margin-right: 10px;
+}
+
+#header-top ul {
+    list-style: none;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#header-top a {
+    text-decoration: none;
+    color: white;
+    font-size: 3vw;
+}
+
+header h1 {
+    font-size: 5vw;
+    margin-top: 35px;
 }
 
 .grid {
@@ -34,8 +63,9 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: black;
     text-decoration: none;
+    font-weight: bold;
 }
 
 main {
@@ -47,12 +77,27 @@ section {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 5vw;
     margin-bottom: 10px;
 }
 
 ul li h3 {
     font-size: 1.2rem;
+}
+
+.tinta-info {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Adicione uma borda em torno de cada item de tinta */
+    padding: 10px; /* Adicione um espaçamento interno */
+    margin: 10px 0; /* Adicione um espaçamento entre os itens de tinta */
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ccc; /* Adicione uma borda superior entre as informações */
+    padding: 5px 0; /* Adicione um espaçamento interno vertical */
 }
 
 form label {
@@ -63,7 +108,7 @@ form label {
 input[type="text"],
 input[type="number"],
 input[type="date"] {
-    width: 25%;
+    width: 35%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -84,4 +129,58 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+}
+
+
+#tinta-table {
+    width: 100%;
+    border-collapse: collapse; /* Combina as bordas das células */
+    margin-top: 20px;
+}
+
+#tinta-table th,
+#tinta-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+#tinta-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#tinta-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Linhas pares com fundo cinza claro */
+}
+
+#tinta-table td button,
+#tinta-table td select {
+    display: block;
+    margin: 0 auto;
+}
+
+#tinta-table td button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#tinta-table td select {
+    width: 100px;
+    padding: 5px;
+}
+
+/* Media queries para telas menores */
+@media screen and (max-width: 768px) {
+    #tinta-table {
+        font-size: 14px; /* Reduza o tamanho da fonte */
+    }
+
+    #tinta-table th:nth-child(5),
+    #tinta-table td:nth-child(5) {
+        display: none; /* Oculte a coluna de ações em telas menores */
+    }
 }

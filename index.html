@@ -5,25 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Inventário de Tintas</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
+    <div id="header-top">
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="inventario.html">TINTAS DISPONIVEIS</a></li>
+            <li><a href="#">ADICIONAR NOVA TINTA</a></li>
+        </ul>
+    </div>
     <header>
         <h1>Gerenciamento de Inventário de Tintas</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Tintas Disponíveis</a></li>
-                <li><a href="#">Adicionar Nova Tinta</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main>
         <section>
             <h2>Tintas Disponíveis</h2>
 
-            <label for="pesquisar-tinta">Pesquisar Tinta:</label>
-            <input type="text" id="pesquisar-tinta" placeholder="Digite o nome da tinta">
+            <label for="pesquisar-tinta"><i class="fa-solid fa-magnifying-glass"></i></label>
+            <input type="text" id="pesquisar-tinta" placeholder="Buscar Tinta">
 
             <label for="categoria">Categoria:</label>
             <select id="categoria" name="categoria">
@@ -35,20 +37,28 @@
             </select>
 
     
-            <ul id="tinta-list" class="grid">
+            <ul id="tinta-list" class="list">
                 <li>
-                    <h3>Tinta Verde</h3>
-                    <p>Quantidade: 10 kg</p>
-                    <p>Localização: prateleira</p>
-                    <p>Data de Aquisição: 11/08/2023</p>
-                    <button class="excluir-tinta">Excluir</button>
-                    <select class="mover-para">
-                        <option value="carrossel">Carrossel</option>
-                        <option value="garra">Garra</option>
-                        <option value="mesa-termica">Mesa Térmica</option>
-                        <option value="prateleira">Prateleira</option>
-                    </select>
-                    <button class="mover-tinta">Mover</button>
+                    <div class="tinta-info">
+                        <div class="info-row">
+                            <h3>Tinta Verde</h3>
+                            <button class="excluir-tinta">Excluir</button>
+                        </div>
+                        <div class="info-row">
+                            <p>Quantidade: 10 kg</p>
+                            <p>Localização: prateleira</p>
+                            <p>Data de Aquisição: 11/08/2023</p>
+                        </div>
+                        <div class="info-row">
+                            <select class="mover-para">
+                                <option value="carrossel">Carrossel</option>
+                                <option value="garra">Garra</option>
+                                <option value="mesa-termica">Mesa Térmica</option>
+                                <option value="prateleira">Prateleira</option>
+                            </select>
+                            <button class="mover-tinta">Mover</button>
+                        </div>
+                    </div>
                 </li>
                 
                 <li>
@@ -82,6 +92,54 @@
                 <!-- Mais itens de tinta podem ser adicionados aqui -->
             </ul>
         </section>
+
+        <table id="tinta-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Localização</th>
+                    <th>Data de Aquisição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tinta Verde</td>
+                    <td>10 kg</td>
+                    <td>Prateleira</td>
+                    <td>11/08/2023</td>
+                    <td>
+                        <button class="excluir-tinta">Excluir</button>
+                        <select class="mover-para">
+                            <option value="carrossel">Carrossel</option>
+                            <option value="garra">Garra</option>
+                            <option value="mesa-termica">Mesa Térmica</option>
+                            <option value="prateleira">Prateleira</option>
+                        </select>
+                        <button class="mover-tinta">Mover</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Tinta Vermelha</td>
+                    <td>10 kg</td>
+                    <td>Prateleira</td>
+                    <td>11/08/2023</td>
+                    <td>
+                        <button class="excluir-tinta">Excluir</button>
+                        <select class="mover-para">
+                            <option value="carrossel">Carrossel</option>
+                            <option value="garra">Garra</option>
+                            <option value="mesa-termica">Mesa Térmica</option>
+                            <option value="prateleira">Prateleira</option>
+                        </select>
+                        <button class="mover-tinta">Mover</button>
+                    </td>
+                </tr>
+                <!-- Repita o mesmo formato para outros itens de tinta -->
+            </tbody>
+        </table>
 
         <section>
             <h2>Adicionar Nova Tinta</h2>
