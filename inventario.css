@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 768px) {
+    #tinta-table {
+        font-size: 2.5vw; /* Reduza o tamanho da fonte */
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: rgb(190, 191, 241);
+    color: black;
+    padding: 10px;
+}
+
+#header-top {
+    width: 100%;
+    background: #333;
+    position: fixed;
+}
+
+#header-top li {
+    display: inline;
+    margin-right: 10px;
+}
+
+#header-top ul {
+    list-style: none;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#header-top a {
+    text-decoration: none;
+    color: white;
+    font-size: 3vw;
+}
+
+header h1 {
+    font-size: 5vw;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.acoes-em-massa img {
+    width: 3.5vw;
+}
+
+main {
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 35%;
+    padding: 3px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#tinta-table {
+    width: 100%;
+    border-collapse: collapse; /* Combina as bordas das células */
+    margin-top: 10px;
+}
+
+#tinta-table th,
+#tinta-table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+}
+
+#tinta-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#tinta-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Linhas pares com fundo cinza claro */
+}
+
+#tinta-table td button,
+#tinta-table td select {
+    display: block;
+    margin: 0 auto;
+}
+
+#tinta-table td button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#tinta-table td select {
+    width: 100px;
+    padding: 5px;
+}
