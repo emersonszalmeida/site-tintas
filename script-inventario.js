@@ -1,8 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll('.selecionar-tinta');
     const btnExcluirSelecionadas = document.querySelector('#excluir-selecionadas');
-    const btnMoverSelecionadas = document.querySelector('#mover-selecionadas');
-    
+    const btnMoverSelecionadas = document.getElementById("mover-selecionadas");
+    const selectDestinoEmMassa = document.getElementById("destino-em-massa");
+
+    btnMoverSelecionadas.addEventListener("click", function () {
+        selectDestinoEmMassa.style.display = "inline-block";
+        const selectedCategory = selectDestinoEmMassa.value;
+        
+        checkboxes.forEach(function (checkbox) {
+            if (checkbox.checked) {
+                const row = checkbox.parentNode.parentNode; // Obtém a linha da tabela
+                const locationCell = row.querySelector("td:nth-child(4)"); // Obtém a célula de localização
+
+                // Altera o texto da célula de localização para a categoria selecionada
+                locationCell.textContent = selectedCategory;
+            }
+        });
+    });
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', atualizarBotoes);
+    });
+
+    function atualizarBotoes() {
+        const algumaSelecionada = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+        if (algumaSelecionada) {
+            btnExcluirSelecionadas.style.display = 'block';
+            btnMoverSelecionadas.style.display = 'block';
+        } else {
+            btnExcluirSelecionadas.style.display = 'none';
+            btnMoverSelecionadas.style.display = 'none';
+        }
+    }
 
     btnExcluirSelecionadas.addEventListener('click', function () {
         checkboxes.forEach(checkbox => {
@@ -11,36 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 tintaRow.remove();
             }
         });
+
+        // Após a exclusão, atualize os botões
+        atualizarBotoes();
     });
-
-    btnMoverSelecionadas.addEventListener('click', function () {
-        const destinoSelecionado = document.querySelector('#destino-em-massa').value; // Suponha que haja um elemento select para escolher o destino
-
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                const tintaRow = checkbox.closest('tr');
-                const nomeTinta = tintaRow.querySelector('td:nth-child(2)').textContent;
-                const quantidade = tintaRow.querySelector('td:nth-child(3)').textContent;
-                const localizacao = tintaRow.querySelector('td:nth-child(4)').textContent;
-                const dataAquisicao = tintaRow.querySelector('td:nth-child(5)').textContent;
-
-                const novaTintaRow = criarNovaLinhaTinta(nomeTinta, quantidade, localizacao, dataAquisicao, destinoSelecionado);
-                tintaRow.insertAdjacentElement('beforebegin', novaTintaRow);
-
-                tintaRow.remove();
-            }
-        });
-    });
-
-    function criarNovaLinhaTinta(nome, quantidade, localizacao, dataAquisicao, destino) {
-        const novaLinha = document.createElement('tr');
-        novaLinha.innerHTML = `
-            <td><input type="checkbox" class="selecionar-tinta"></td>
-            <td>${nome}</td>
-            <td>${quantidade}</td>
-            <td>${localizacao}</td>
-            <td>${dataAquisicao}</td>
-        `;
-        return novaLinha;
-    }
 });

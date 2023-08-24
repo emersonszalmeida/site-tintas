@@ -52,8 +52,21 @@ header h1 {
     text-align: center;
 }
 
+.acoes-em-massa {
+    display: flex;
+    align-items: center;
+}
+
+.acoes-em-massa button {
+    margin-right: 10px;
+}
+
 .acoes-em-massa img {
     width: 3.5vw;
+}
+
+#destino-em-massa {
+    display: none;
 }
 
 main {

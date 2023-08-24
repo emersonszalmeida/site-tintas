@@ -36,10 +36,17 @@
         </select>
 
         <div class="acoes-em-massa">
-            <button id="excluir-selecionadas"><img src="svg/trashcan1_114647.svg" alt=""></button>
-            <button id="mover-selecionadas"><img src="svg/folder_move_outline_icon_139530.svg" alt=""></button>
+            <button id="excluir-selecionadas" style="display: none;"><img src="svg/trashcan1_114647.svg" alt=""></button>
+            <button id="mover-selecionadas" style="display: none;"><img src="svg/folder_move_outline_icon_139530.svg" alt=""></button>
         </div>
 
+        <select id="destino-em-massa" name="destino-em-massa">
+            <option value="carrossel">Carrossel</option>
+            <option value="garra">Garra</option>
+            <option value="mesa-termica">Mesa Térmica</option>
+            <option value="prateleira">Prateleira</option>
+        </select>        
+        
         <table id="tinta-table">
             <thead>
                 <tr>
