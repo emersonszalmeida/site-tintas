@@ -29,9 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (algumaSelecionada) {
             btnExcluirSelecionadas.style.display = 'block';
             btnMoverSelecionadas.style.display = 'block';
+             
         } else {
             btnExcluirSelecionadas.style.display = 'none';
             btnMoverSelecionadas.style.display = 'none';
+            selectDestinoEmMassa.style.display = 'none';
         }
     }
 
