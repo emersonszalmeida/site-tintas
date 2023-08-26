@@ -38,8 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-
-
     btnMoverSelecionadas.addEventListener("click", function () {
         selectDestinoEmMassa.style.display = "inline-block";
         const selectedCategory = selectDestinoEmMassa.value;
