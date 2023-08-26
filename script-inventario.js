@@ -3,6 +3,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnExcluirSelecionadas = document.querySelector('#excluir-selecionadas');
     const btnMoverSelecionadas = document.getElementById("mover-selecionadas");
     const selectDestinoEmMassa = document.getElementById("destino-em-massa");
+    const inputPesquisar = document.getElementById('pesquisar-tinta');
+    const tabelaTintas = document.getElementById('tinta-table');
+    const linhasTintas = tabelaTintas.getElementsByTagName('tr');
+
+    inputPesquisar.addEventListener('input', function() {
+        const termoPesquisa = inputPesquisar.value.toLowerCase();
+
+        for (let i = 0; i < linhasTintas.length; i++) {
+            const colunaNome = linhasTintas[i].getElementsByTagName('td')[1];
+
+            if (colunaNome) {
+                const nomeTinta = colunaNome.textContent.toLowerCase();
+                if (nomeTinta.includes(termoPesquisa)) {
+                    linhasTintas[i].style.display = '';
+                } else {
+                    linhasTintas[i].style.display = 'none';
+                }
+            }
+        }
+    });
+
+    selectDestinoEmMassa.addEventListener('change', function () {
+        const selectedCategory = selectDestinoEmMassa.value;
+        
+        for (let i = 0; i < linhasTintas.length; i++) {
+            const colunaLocalizacao = linhasTintas[i].getElementsByTagName('td')[3];
+
+            if (selectedCategory === 'todas' || colunaLocalizacao.textContent.toLowerCase() === selectedCategory) {
+                linhasTintas[i].style.display = '';
+            } else {
+                linhasTintas[i].style.display = 'none';
+            }
+        }
+    });
+
+
 
     btnMoverSelecionadas.addEventListener("click", function () {
         selectDestinoEmMassa.style.display = "inline-block";
