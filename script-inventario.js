@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabelaTintas = document.getElementById('tinta-table');
     const linhasTintas = tabelaTintas.getElementsByTagName('tr');
     const inputFiltrar = document.getElementById('filtrar-tinta');
+    const checkboxMarcarDesmarcarTodos = document.getElementById('marcar-desmarcar-todos');
+
+    checkboxMarcarDesmarcarTodos.addEventListener('change', function () {
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = checkboxMarcarDesmarcarTodos.checked;
+        });
+
+        atualizarBotoes();
+    });
 
     inputFiltrar.addEventListener('input', function() {
         const termoFiltro = inputFiltrar.value.toLowerCase();
