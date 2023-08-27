@@ -22,33 +22,74 @@ header {
     padding: 10px;
 }
 
-#header-top {
-    width: 100%;
-    background: #333;
-    position: fixed;
+#menu {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#header-top li {
-    display: inline;
-    margin-right: 10px;
+#menu-icon {
+    cursor: pointer;
 }
 
-#header-top ul {
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+#menu-links {
     list-style: none;
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-bottom: 5px;
+    display: none;
 }
 
-#header-top a {
+#menu-links.active {
+    display: block;
+}
+
+#menu-links li {
+    margin: 10px 0;
+}
+
+#menu-links a {
     text-decoration: none;
     color: white;
-    font-size: 3vw;
+    font-size: 16px;
 }
+
+@media screen and (max-width: 768px) {
+    #menu-links {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: #333;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #menu-links.active {
+        display: block;
+    }
+
+    #menu-links li {
+        margin: 20px 0;
+    }
+
+    #menu-icon.active .bar {
+        background-color: #ccc;
+    }
+}
+
+
 
 header h1 {
     font-size: 5vw;
-    margin-top: 25px;
+    
     text-align: center;
 }
 
