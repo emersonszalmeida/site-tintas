@@ -84,10 +84,8 @@ main {
     padding-left: 20px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"] {
-    width: 50%;
+input[type="text"] {
+    width: 60%;
     padding: 3px;
     margin-bottom: 10px;
     border: 1px solid #ccc;

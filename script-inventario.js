@@ -6,6 +6,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputPesquisar = document.getElementById('pesquisar-tinta');
     const tabelaTintas = document.getElementById('tinta-table');
     const linhasTintas = tabelaTintas.getElementsByTagName('tr');
+    const inputFiltrar = document.getElementById('filtrar-tinta');
+
+    inputFiltrar.addEventListener('input', function() {
+        const termoFiltro = inputFiltrar.value.toLowerCase();
+
+        for (let i = 0; i < linhasTintas.length; i++) {
+            const colunaNome = linhasTintas[i].getElementsByTagName('td')[3];
+
+            if (colunaNome) {
+                const nomeTinta = colunaNome.textContent.toLowerCase();
+                if (nomeTinta.includes(termoFiltro)) {
+                    linhasTintas[i].style.display = '';
+                } else {
+                    linhasTintas[i].style.display = 'none';
+                }
+            }
+        }
+    });
 
     inputPesquisar.addEventListener('input', function() {
         const termoPesquisa = inputPesquisar.value.toLowerCase();
