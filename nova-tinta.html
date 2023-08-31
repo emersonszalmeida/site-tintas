@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Tinta</title>
+    <link rel="stylesheet" href="nova-tinta.css">
+</head>
+<body>
+    <nav id="menu">
+        <div id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul id="menu-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="inventario.html">TINTAS DISPONIVEIS</a></li>
+            <li><a href="nova-tinta.html">ADICIONAR NOVA TINTA</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Adicionar Nova Tinta</h1>
+    </header>
+
+    <main>
+        
+        <section>
+            <h2>Nova Tinta</h2>
+            <form id="add-tinta-form">
+                <label for="nome-tinta">Nome da Tinta:</label>
+                <input type="text" id="nome-tinta" name="nome-tinta" required>
+        
+                <label for="quantidade">Quantidade (kg):</label>
+                <input type="number" id="quantidade" name="quantidade" required>
+        
+                <label for="data-aquisicao">Data de Aquisição:</label>
+                <input type="date" id="data-aquisicao" name="data-aquisicao" required>
+
+                <label for="localizacao">Localização:</label>
+                        <select id="localizacao" name="localizacao">
+                            <option value="prateleira">Prateleira</option>
+                            <option value="carrossel">Carrossel</option>
+                            <option value="garra">Garra</option>
+                            <option value="mesa-termica">Mesa Térmica</option>
+                        </select>
+
+                <button type="submit">Adicionar Tinta</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="nova-tinta.js"></script>
+    
+</body>
+</html>
